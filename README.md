@@ -11,3 +11,5 @@
 5.https://ithelp.ithome.com.tw/articles/10278453
 
 6.https://www.w3school.com.cn/htmldom/met_doc_getelementbyid.asp
+
+7.https://www.freecodecamp.org/chinese/news/javascript-split-how-to-split-a-string-into-an-array-in-js/

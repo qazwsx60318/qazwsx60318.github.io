@@ -12,7 +12,7 @@
   <p>獎項：頭獎 100元（三個數字全中）、貳獎 10元（三個數字中任意兩個）、參獎 1元（三個數字中任意一個）</p>
   <p id="result"></p>
   <!-- CSS特效4 -->
-  <input type="text" id="numbers" placeholder="請輸入 3 個號碼（1~10）">
+  <input type="text" id="numbers" placeholder="請輸入三個範圍在1~10的數字">
   <!-- CSS特效2 -->
   <!-- CSS特效5 -->
   <button onclick="checkNumbers()">開獎</button>
@@ -36,7 +36,7 @@
     // 檢查輸入的數字是否有效
     // 參考3.4.5
     function validate_Numbers(input) {
-      if (input.length !== 3) {
+      if (input.length != 3) {
         return false;
       }
       for (let i = 0; i < 3; i++) {
@@ -50,7 +50,7 @@
     }
     // (2) 三個獎項皆設有不同金額的中獎獎金(金額為自訂之正整數)
     // 檢查是否中獎
-    // 參考6
+    // 參考6.7
     function checkNumbers() {
       const input = document.getElementById("numbers").value.split(" ");
       if (!validate_Numbers(input)) {
@@ -69,11 +69,11 @@
       // CSS特效3
       let message = "";
       if (matchedNumbers.length === 3) {
-        message = "恭喜您中了頭獎100NTD！";
+        message = "恭喜您中了頭獎 100 元！";
       } else if (matchedNumbers.length === 2) {
-        message = "恭喜您中了貳獎10NTD！";
+        message = "恭喜您中了貳獎 10 元！";
       } else if (matchedNumbers.length === 1) {
-        message = "恭喜您中了參獎1NTD！";
+        message = "恭喜您中了參獎 1 元！";
       } else {
         message = "很遺憾，您沒有中獎。";
       }

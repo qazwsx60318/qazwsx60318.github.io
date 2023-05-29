@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>樂透遊戲</title>
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+  <!--(3) 網頁中使用了 5 種不同的 CSS 語法所設計的特效，已使用註解標記-->
+  <!-- CSS特效1 -->
+  <h1>樂透遊戲</h1>
+  <p>遊戲規則：請在下方輸入框中輸入 3 個數字（1~10），中間以空白隔開即可，然後按下開獎按鈕。</p>
+  <p>獎項：頭獎 100元（三個數字全中）、貳獎 10元（三個數字中任意兩個）、參獎 1元（三個數字中任意一個）</p>
+  <p id="result"></p>
+  <!-- CSS特效4 -->
+  <input type="text" id="numbers" placeholder="請輸入 3 個號碼（1~10）">
+  <!-- CSS特效2 -->
+  <!-- CSS特效5 -->
+  <button onclick="checkNumbers()">開獎</button>
+  <button onclick="reset()">重新開始</button>
+
+  <script>
+    // (1) 使用 JS 設計一個樂透遊戲並在網頁中以文字說明遊戲規則
+    // 亂數得獎號碼
+    // 參考1.2
+    function getRandom() {
+      const numbers = [];
+      while (numbers.length < 3) {
+        const rdnum = Math.floor(Math.random() * 10) + 1;
+        if (!numbers.includes(rdnum)) {
+          numbers.push(rdnum);
+        }
+      }
+      return numbers;
+    }
+
+    // 檢查輸入的數字是否有效
+    // 參考3.4.5
+    function validate_Numbers(input) {
+      if (input.length !== 3) {
+        return false;
+      }
+      for (let i = 0; i < 3; i++) {
+        const num = parseFloat(input[i]);
+        //(5) 具備輸入檢查功能
+        if (isNaN(num) || num < 1 || num > 10 || input.indexOf(input[i]) !== i || !Number.isInteger(num)) {
+          return false;
+        }
+      }
+      return true;
+    }
+    // (2) 三個獎項皆設有不同金額的中獎獎金(金額為自訂之正整數)
+    // 檢查是否中獎
+    // 參考6
+    function checkNumbers() {
+      const input = document.getElementById("numbers").value.split(" ");
+      if (!validate_Numbers(input)) {
+        alert("請輸入 3 個有效的號碼（1~10）");
+        reset();
+        return;
+      }
+
+      const winningNumbers = getRandom();
+      const matchedNumbers = [];
+      for (let i = 0; i < 3; i++) {
+        if (winningNumbers.includes(parseInt(input[i]))) {
+          matchedNumbers.push(input[i]);
+        }
+      }
+      // CSS特效3
+      let message = "";
+      if (matchedNumbers.length === 3) {
+        message = "恭喜您中了頭獎100NTD！";
+      } else if (matchedNumbers.length === 2) {
+        message = "恭喜您中了貳獎10NTD！";
+      } else if (matchedNumbers.length === 1) {
+        message = "恭喜您中了參獎1NTD！";
+      } else {
+        message = "很遺憾，您沒有中獎。";
+      }
+
+      const result = document.getElementById("result");
+      result.innerHTML = message;
+    }
+
+    // 重新開始
+    // (4) 具備重新開始(reset)功能的按鈕
+    function reset() {
+      document.getElementById("numbers").value = "";
+      document.getElementById("result").innerHTML = "";
+    }
+  </script>
+</body>
+</html>

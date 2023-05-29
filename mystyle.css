@@ -14,7 +14,7 @@ p#result {
 }
 
 body {
-    background: linear-gradient(to right, #ffcccc, #ccffff);
+    background: linear-gradient(to right, red, blue);
 }
   
 input[type="text"] {

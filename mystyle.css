@@ -12,13 +12,13 @@ p#result {
     font-style: italic;
     color: red;
 }
-
-body {
-    background: linear-gradient(to right, red, blue);
-}
   
 input[type="text"] {
     border: 2px solid green;
+}
+
+body {
+    background: linear-gradient(to right, #ffcccc, #ccffff);
 }
   
 button:hover {
